@@ -1,0 +1,5 @@
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name" />
+<p>Value: {{ name.value }}</p>
+<p>Value: {{ name.valueChanges | async }}</p>
+<button (click)="changeValue()">Change value</button>
