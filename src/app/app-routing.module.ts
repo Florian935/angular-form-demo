@@ -23,6 +23,13 @@ const routes: Routes = [
                 (m) => m.NestedFormGroupModule
             ),
     },
+    {
+        path: 'update-form',
+        loadChildren: () =>
+            import('./pages/update-form/update-form.module').then(
+                (m) => m.UpdateFormModule
+            ),
+    },
 ];
 
 @NgModule({

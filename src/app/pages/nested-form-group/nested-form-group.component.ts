@@ -7,7 +7,6 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./nested-form-group.component.scss'],
 })
 export class NestedFormGroupComponent implements OnInit {
-    toto = { a: 2 };
     profileForm = new FormGroup({
         firstName: new FormControl(''),
         lastName: new FormControl(''),
