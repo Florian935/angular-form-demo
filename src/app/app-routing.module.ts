@@ -16,6 +16,13 @@ const routes: Routes = [
                 (m) => m.GroupFormModule
             ),
     },
+    {
+        path: 'nested-form-group',
+        loadChildren: () =>
+            import('./pages/nested-form-group/nested-form-group.module').then(
+                (m) => m.NestedFormGroupModule
+            ),
+    },
 ];
 
 @NgModule({
