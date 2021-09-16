@@ -37,6 +37,13 @@ const routes: Routes = [
                 (m) => m.FormBuilderModule
             ),
     },
+    {
+        path: 'validate-form',
+        loadChildren: () =>
+            import('./pages/validate-form/validate-form.module').then(
+                (m) => m.ValidateFormModule
+            ),
+    },
 ];
 
 @NgModule({
