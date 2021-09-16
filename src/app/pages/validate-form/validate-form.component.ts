@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
+import { forbiddenNameValidator } from 'src/app/shared/directive/forbidden-name.directive';
 
 @Component({
     selector: 'app-validate-form',
@@ -13,7 +19,14 @@ export class ValidateFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.profileForm = this._formBuilder.group({
-            firstName: ['', [Validators.required]],
+            firstName: [
+                '',
+                [
+                    Validators.required,
+                    Validators.minLength(2),
+                    forbiddenNameValidator(/bob/i),
+                ],
+            ],
             lastName: [''],
             address: this._formBuilder.group({
                 street: [''],
@@ -50,5 +63,9 @@ export class ValidateFormComponent implements OnInit {
                 zip: '75000',
             },
         });
+    }
+
+    get firstName(): FormControl {
+        return this.profileForm.get('firstName') as FormControl;
     }
 }
