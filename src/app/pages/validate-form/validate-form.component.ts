@@ -6,6 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { forbiddenNameValidator } from 'src/app/shared/directive/forbidden-name.directive';
+import { lastFirstNameNotEqualValidator } from 'src/app/shared/directive/last-first-name-not-equal.directive';
 
 @Component({
     selector: 'app-validate-form',
@@ -18,23 +19,26 @@ export class ValidateFormComponent implements OnInit {
     constructor(private _formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
-        this.profileForm = this._formBuilder.group({
-            firstName: [
-                '',
-                [
-                    Validators.required,
-                    Validators.minLength(2),
-                    forbiddenNameValidator(/bob/i),
+        this.profileForm = this._formBuilder.group(
+            {
+                firstName: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.minLength(2),
+                        forbiddenNameValidator(/bob/i),
+                    ],
                 ],
-            ],
-            lastName: [''],
-            address: this._formBuilder.group({
-                street: [''],
-                city: [''],
-                state: [''],
-                zip: [''],
-            }),
-        });
+                lastName: [''],
+                address: this._formBuilder.group({
+                    street: [''],
+                    city: [''],
+                    state: [''],
+                    zip: [''],
+                }),
+            },
+            { validators: lastFirstNameNotEqualValidator() }
+        );
 
         this.profileForm.valueChanges.subscribe(console.log);
     }

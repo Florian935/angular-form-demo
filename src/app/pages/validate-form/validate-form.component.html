@@ -14,6 +14,15 @@
 
         <div *ngIf="firstName.errors?.forbiddenName">Name cannot be Bob.</div>
     </div>
+    <div
+        class="error"
+        *ngIf="
+            profileForm.errors?.lastFirstNameAreEqual &&
+            (profileForm.dirty || profileForm.touched)
+        "
+    >
+        First name cannot match last name.
+    </div>
 
     <label for="last-name">Last Name: </label>
     <input id="last-name" type="text" formControlName="lastName" />
