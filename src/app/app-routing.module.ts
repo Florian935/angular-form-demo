@@ -30,6 +30,13 @@ const routes: Routes = [
                 (m) => m.UpdateFormModule
             ),
     },
+    {
+        path: 'form-builder',
+        loadChildren: () =>
+            import('./pages/form-builder/form-builder.module').then(
+                (m) => m.FormBuilderModule
+            ),
+    },
 ];
 
 @NgModule({
