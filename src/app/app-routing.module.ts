@@ -51,6 +51,13 @@ const routes: Routes = [
                 (m) => m.DynamicFormModule
             ),
     },
+    {
+        path: 'dynamic-form-group',
+        loadChildren: () =>
+            import('./pages/dynamic-form-group/dynamic-form-group.module').then(
+                (m) => m.DynamicFormGroupModule
+            ),
+    },
 ];
 
 @NgModule({
