@@ -44,6 +44,13 @@ const routes: Routes = [
                 (m) => m.ValidateFormModule
             ),
     },
+    {
+        path: 'dynamic-form',
+        loadChildren: () =>
+            import('./pages/dynamic-form/dynamic-form.module').then(
+                (m) => m.DynamicFormModule
+            ),
+    },
 ];
 
 @NgModule({
