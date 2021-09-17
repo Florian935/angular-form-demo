@@ -58,6 +58,13 @@ const routes: Routes = [
                 (m) => m.DynamicFormGroupModule
             ),
     },
+    {
+        path: 'dynamic-factory-form',
+        loadChildren: () =>
+            import(
+                './pages/dynamic-factory-form/dynamic-factory-form.module'
+            ).then((m) => m.DynamicFactoryFormModule),
+    },
 ];
 
 @NgModule({
