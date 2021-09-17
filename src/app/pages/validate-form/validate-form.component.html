@@ -2,6 +2,9 @@
     <label for="first-name">First Name: </label>
     <input id="first-name" type="text" formControlName="firstName" required />
 
+    <div *ngIf="profileForm.status === 'PENDING'">
+        <strong>Checking if this first name already exist ...</strong>
+    </div>
     <div
         class="error"
         *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
@@ -13,6 +16,10 @@
         </div>
 
         <div *ngIf="firstName.errors?.forbiddenName">Name cannot be Bob.</div>
+
+        <div *ngIf="firstName.errors?.usernameExist">
+            This first name already exist.
+        </div>
     </div>
     <div
         class="error"
